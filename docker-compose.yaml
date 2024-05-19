@@ -1,0 +1,14 @@
+services:
+  sftp:
+    build:
+      context: .
+      dockerfile: Dockerfile-alpine
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+        - /upload:/home/foo/upload
+    ports:
+        - "2222:22"
+    command: foo:pass:1001
